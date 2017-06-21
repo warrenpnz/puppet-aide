@@ -1,17 +1,26 @@
 # class managing aide configuration.
-class aide::config inherits aide {
+class aide::config (
+  $conf_path,
+  $db_path,
+  $db_temp_path,
+  $gzip_dbout,
+  $aide_log,
+  $syslogout,
+  $config_template,
+) {
+
   concat { 'aide.conf':
-    path    => $::aide::conf_path,
+    path    => $conf_path,
     owner   => 'root',
     group   => 'root',
     mode    => '0600',
-    require => Package['aide']
+    require => Package['aide'],
   }
 
   concat::fragment { 'aide.conf.header':
     target  => 'aide.conf',
     order   => 01,
-    content => template( 'aide/aide.conf.erb')
+    content => template( $config_template ),
   }
 
   concat::fragment { 'rule_header':

@@ -1,10 +1,20 @@
 # Class for managing aide's cron job.
-class aide::cron inherits aide {
-  cron { 'aide':
-    command => "${::aide::params::aide_path} --check",
-    user    => 'root',
-    hour    => '*',
-    minute  => $::aide::minute,
-    require => [Package['aide'], Exec['install aide db']]
+class aide::cron (
+  $aide_path,
+  $db_path,
+  $minute,
+  $hour,
+  $mailto,
+  $cron_template,
+) {
+
+  file { '/etc/cron.d/aide':
+    ensure  => present,
+    content => template( $cron_template ),
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    require => Package['aide'],
   }
+
 }

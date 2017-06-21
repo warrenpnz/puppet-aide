@@ -1,9 +1,9 @@
 {
-  "name": "mklauber-aide",
-  "version": "1.1.2",
-  "summary": "A puppet module for installing and configuring aide",
-  "author": "Matthew Lauber",
-  "description": "A puppet module for setting up and configuring aide (Advanced Intrusion Detection System) via puppet.",
+  "name": "warrenpnz-aide",
+  "version": "1.1.0",
+  "summary": "A puppet module for installing and configuring AIDE",
+  "author": "Warren Powell",
+  "description": "A puppet module for setting up and configuring AIDE (Advanced Intrusion Detection System) via puppet.",
   "dependencies": [
     {
       "name": "puppetlabs/concat",
@@ -16,7 +16,7 @@
   ],
   "types": [],
   "checksums": {},
-  "source": "https://github.com/mklauber/puppet-aide",
-  "project_page": "https://github.com/mklauber/puppet-aide",
+  "source": "https://github.com/warrenpnz/puppet-aide",
+  "project_page": "https://github.com/warrenpnz/puppet-aide",
   "license": "Apache Version 2.0"
 }
