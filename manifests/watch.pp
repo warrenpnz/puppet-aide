@@ -1,9 +1,11 @@
 # aide::watch defines a path/rule combination in the aide.conf file
-define aide::watch ( $path = $name,
+define aide::watch ( 
+  $path = $name,
   $type  = 'regular',
   $rules = undef,
-  $order = 50
+  $order = 50,
 ) {
+
   include aide
 
   $_rules = any2array($rules)
@@ -15,12 +17,12 @@ define aide::watch ( $path = $name,
     'regular' => inline_template("${path} <%= @_rules.join('+') %>\n"),
     'equals'  => inline_template("=${path} <%= @_rules.join('+') %>\n"),
     'exclude' => inline_template("!${path}\n"),
-    default   => fail("Type field value ${type} is invalid.  Acceptable values are ['regular', 'equals', 'exclude']")
+    default   => fail("Type field value ${type} is invalid.  Acceptable values are ['regular', 'equals', 'exclude']"),
   }
 
   concat::fragment { $title:
     target  => 'aide.conf',
     order   => $order,
-    content => $content
+    content => $content,
   }
 }

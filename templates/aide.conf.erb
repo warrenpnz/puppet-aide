@@ -8,6 +8,13 @@ database_new=file:<%= @db_temp_path %>
 # gzip output to the database?
 gzip_dbout=<%= @gzip_dbout %>
 
+# Where to log output (stdout, log file and syslog if requested)
+report_url=stdout
+report_url=file://<%= @aide_log %>
+<% if @syslogout -%>
+report_url=syslog:LOG_AUTH
+<% end -%>
+
 # Rule predefined types:
 #p:      permissions
 #i:      inode:

@@ -1,6 +1,7 @@
 node default {
   class { 'aide':
     minute => 0,
+	hour => 3,
   }
   aide::rule { 'MyRule':
     rules => [ 'p', 'sha256'],
