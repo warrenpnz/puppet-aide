@@ -1,7 +1,14 @@
+# This file is managed by puppet
+
 ## User to send output to for reporting
 MAILTO=<%= @mailto %>
 
 ## AIDE should run as root and will log output to those places in the /etc/aide.conf file
 ## specified in the report_url lines
-<%= @minute %> <%= @hour %> * * * root <%= @aide_path %> --check
 
+<% if @nocheck -%>
+# Check disabled via Puppet using the aide::nocheck option
+# <%= @minute %> <%= @hour %> * * * root <%= @aide_path %> --check
+<% else -%>
+<%= @minute %> <%= @hour %> * * * root <%= @aide_path %> --check
+<% end -%>

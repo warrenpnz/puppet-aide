@@ -12,6 +12,7 @@ class aide::params {
   $syslogout       = true
   $config_template = 'aide/aide.conf.erb'
   $cron_template   = 'aide/cron.erb'
+  $nocheck         = false
 
   case $::osfamily {
     'Debian': {

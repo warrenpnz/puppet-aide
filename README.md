@@ -5,10 +5,11 @@
 1. [Description](#description)
 2. [Examples](#examples)
 3. [Cron Entry](#cron)
-4. [Assigning parameters using Hiera](#hiera)
-5. [Limitations](#limitations)
-6. [Contributing to the development of this module](#contributing)
-7. [Credits](#Credits)
+4. [Reference - What the module is doing and how](#reference)
+5. [Assigning parameters using Hiera](#hiera)
+6. [Limitations](#limitations)
+7. [Contributing to the development of this module](#contributing)
+8. [Credits](#Credits)
 
 ## Description
 
@@ -96,6 +97,116 @@ This will watch only the file /var/log/messages.  It will ignore /var/log/messag
 ## Cron
 
 A cron file is created at /etc/cron.d/aide during installation to run aide checks that use the `hour` and `minute` parameters to specify the run time.
+
+This cron job can be disabled by setting the `aide::nocheck` parameter.
+
+## Reference
+
+The following parameters are accepted by the `::aide` class:
+
+### Installation  Options
+
+#### `package`
+
+Data type: String.
+
+AIDE package name.
+
+Default value: `aide`.
+
+#### `version`
+
+Data type: String.
+
+AIDE version for installation passed to Package::ensure
+
+Default value: `latest`.
+
+### Configuration  Options
+
+#### `db_path`
+
+Data type: String.
+
+Location of AIDE database file
+
+Default value: `/var/lib/aide/aide.db`.
+
+#### `db_temp_path`
+
+Data type: String.
+
+Location of update AIDE database file
+
+Default value: `/var/lib/aide/aide.db.new`.
+
+#### `gzip_dbout`
+
+Data type: Boolean.
+
+Gzip the AIDE database file (may affect performance)
+
+Default value: `false`.
+
+### Logging Options
+
+#### `aide_log`
+
+Data type: String.
+
+AIDE check output log.
+
+Default value: `/var/log/aide/aide.log`.
+
+#### `syslogout`
+
+Data type: Boolean.
+
+Enables logging to the system logging service AUTH facility and `/var/log/messages`.
+
+Default value: `true`.
+
+### Cron scheduling Options
+
+#### `mailto`
+
+Data type: String.
+
+User to set as email recipient in cron file.
+
+Default value: `root`.
+
+#### `minute`
+
+Data type: Integer.
+
+Minute of cron job to run
+
+Default value: `0`.
+
+#### `hour`
+
+Data type: Integer.
+
+Hour of cron job to run
+
+Default value: `0`.
+
+#### `nocheck`
+
+Data type: Boolean.
+
+Whether to enable of disable scheduled checks
+
+Default value: `true`.
+
+#### `cron_template`
+
+Data type: String.
+
+Puppet template file to use for cron file creation
+
+Default value: `aide/cron.erb`.
 
 
 ## Hiera

@@ -6,6 +6,7 @@ class aide::cron (
   $hour,
   $mailto,
   $cron_template,
+  $nocheck,
 ) {
 
   file { '/etc/cron.d/aide':
@@ -16,5 +17,4 @@ class aide::cron (
     mode    => '0644',
     require => Package['aide'],
   }
-
 }

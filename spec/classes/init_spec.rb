@@ -16,6 +16,10 @@ describe 'aide', type: 'class' do
      should contain_file('/etc/cron.d/aide').with_owner('root')
      should contain_file('/etc/cron.d/aide').with_group('root')
      should contain_file('/etc/cron.d/aide').with_mode('0644')
+     # DB file
+     should contain_file('/var/lib/aide/aide.db').with_owner('root')
+     should contain_file('/var/lib/aide/aide.db').with_group('root')
+     should contain_file('/var/lib/aide/aide.db').with_mode('0600')
     }
   end
 

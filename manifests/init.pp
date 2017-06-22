@@ -14,13 +14,14 @@ class aide (
   $syslogout       = $aide::params::syslogout,
   $config_template = $aide::params::config_template,
   $cron_template   = $aide::params::cron_template,
+  $nocheck         = $aide::params::nocheck,
 ) inherits aide::params {
 
   anchor { 'aide::begin': }
 
   -> class  { '::aide::install':
-      version => $version,
-      package => $package,
+      version   => $version,
+      package   => $package,
     }
 
   -> class  { '::aide::cron':
@@ -30,6 +31,7 @@ class aide (
       hour          => $hour,
       mailto        => $mailto,
       cron_template => $cron_template,
+      nocheck       => $nocheck,
     }
 
   -> class  { '::aide::config':
