@@ -16,39 +16,39 @@ class aide (
   $cron_template   = $aide::params::cron_template,
 ) inherits aide::params {
 
-  anchor { 'aide::begin': } ->
+  anchor { 'aide::begin': }
 
-  class  { '::aide::install': 
-    version => $version,
-    package => $package,
-  } ->
+  -> class  { '::aide::install':
+      version => $version,
+      package => $package,
+    }
 
-  class  { '::aide::cron': 
-    aide_path     => $aide_path,
-    db_path       => $db_path,
-    minute        => $minute,
-    hour          => $hour,
-    mailto        => $mailto,
-    cron_template => $cron_template,
-  } ->
+  -> class  { '::aide::cron':
+      aide_path     => $aide_path,
+      db_path       => $db_path,
+      minute        => $minute,
+      hour          => $hour,
+      mailto        => $mailto,
+      cron_template => $cron_template,
+    }
 
-  class  { '::aide::config': 
-    conf_path       => $conf_path,
-    db_path         => $db_path,
-    db_temp_path    => $db_temp_path,
-    gzip_dbout      => $gzip_dbout,
-    aide_log        => $aide_log,
-    syslogout       => $syslogout,
-    config_template => $config_template,
-  } ~>
+  -> class  { '::aide::config':
+      conf_path       => $conf_path,
+      db_path         => $db_path,
+      db_temp_path    => $db_temp_path,
+      gzip_dbout      => $gzip_dbout,
+      aide_log        => $aide_log,
+      syslogout       => $syslogout,
+      config_template => $config_template,
+    }
 
-  class  { '::aide::firstrun': 
-    aide_path    => $aide_path,
-    conf_path    => $conf_path,
-    db_temp_path => $db_temp_path,
-    db_path      => $db_path,
-  } ->
+  ~> class  { '::aide::firstrun':
+      aide_path    => $aide_path,
+      conf_path    => $conf_path,
+      db_temp_path => $db_temp_path,
+      db_path      => $db_path,
+    }
 
-  anchor { 'aide::end': }
+  -> anchor { 'aide::end': }
 
 }

@@ -4,9 +4,8 @@ class aide::install (
   $package,
 ) {
 
-  package { 'aide':
+  package { $package:
     ensure => $version,
-    name   => $package,
   }
 
 }

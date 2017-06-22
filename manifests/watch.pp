@@ -1,5 +1,5 @@
 # aide::watch defines a path/rule combination in the aide.conf file
-define aide::watch ( 
+define aide::watch (
   $path = $name,
   $type  = 'regular',
   $rules = undef,

@@ -10,4 +10,4 @@ matrix:
     - rvm: ruby-head
 notifications:
   email:
-    - <github.com@mklauber.com>
+    - <warrenpnz@gmail.com>
