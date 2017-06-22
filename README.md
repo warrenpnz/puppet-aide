@@ -5,9 +5,9 @@
 1. [Description](#description)
 2. [Examples](#examples)
 3. [Cron Entry](#cron)
-4. [Assigning parameters using Hiera](#heira)
+4. [Assigning parameters using Hiera](#hiera)
 5. [Limitations](#limitations)
-6. [Contributing to the development of this module](#contributors)
+6. [Contributing to the development of this module](#contributing)
 7. [Credits](#Credits)
 
 ## Description
