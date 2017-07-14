@@ -1,17 +1,13 @@
 node default {
+  # This will install aide and do initial db creation but disable the cron job
   class { 'aide':
-    minute => 0,
-    hour   => 1,
+    nocheck => true,
   }
   aide::rule { 'MyRule':
-    rules => [ 'p', 'sha256'],
+    rules => [ 'p', ],
   }
   aide::watch { '/etc':
     path  => '/etc',
-    rules => 'MyRule'
-  }
-  aide::watch { '/boot':
-    path  => '/boot',
     rules => 'MyRule'
   }
 

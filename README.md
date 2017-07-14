@@ -25,6 +25,14 @@ The module will also add a cron job to periodically run the `aide --check` comma
 
 ==========
 
+Include the aide class and set cron run time to 6am with mail to a user other than root
+----------
+  class { 'aide':
+    mailto => 'foo@bar.com',
+    minute => 0,
+    hour   => 6,
+  }
+
 Watch permissions of all files on filesystem
 ----------
 
@@ -196,7 +204,7 @@ Default value: `0`.
 
 Data type: Boolean.
 
-Whether to enable of disable scheduled checks
+Whether to enable or disable scheduled checks
 
 Default value: `true`.
 

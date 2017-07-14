@@ -20,8 +20,8 @@ class aide (
   anchor { 'aide::begin': }
 
   -> class  { '::aide::install':
-      version   => $version,
-      package   => $package,
+      version => $version,
+      package => $package,
     }
 
   -> class  { '::aide::cron':
