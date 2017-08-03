@@ -28,7 +28,6 @@ The module will also add a cron job to periodically run the `aide --check` comma
 Include the aide class and set cron run time to 6am with mail to a user other than root
 ----------
   class { 'aide':
-    mailto => 'foo@bar.com',
     minute => 0,
     hour   => 6,
   }
@@ -104,7 +103,7 @@ This will watch only the file /var/log/messages.  It will ignore /var/log/messag
 
 ## Cron
 
-A cron file is created at /etc/cron.d/aide during installation to run aide checks that use the `hour` and `minute` parameters to specify the run time.
+A cron job is created during installation to run aide checks that use the `hour` and `minute` parameters to specify the run time.
 
 This cron job can be disabled by setting the `aide::nocheck` parameter.
 
@@ -176,14 +175,6 @@ Default value: `true`.
 
 ### Cron scheduling Options
 
-#### `mailto`
-
-Data type: String.
-
-User to set as email recipient in cron file.
-
-Default value: `root`.
-
 #### `minute`
 
 Data type: Integer.
@@ -208,14 +199,6 @@ Whether to enable or disable scheduled checks
 
 Default value: `true`.
 
-#### `cron_template`
-
-Data type: String.
-
-Puppet template file to use for cron file creation
-
-Default value: `aide/cron.erb`.
-
 
 ## Hiera
 
@@ -228,7 +211,7 @@ aide::hour: 1
 
 ## Limitations
 
-Currently supports RedHat / CentOS 6 & 7.
+Currently supports RedHat, CentOS, Debian and Ubuntu Linux
 
 ## Contributing
 
@@ -238,7 +221,6 @@ Pull requests for new functionality or bug fixes that follow the Puppet style gu
 ## Credits
 
 This module is a refactor based on the initial work of [Matt Lauber](https://github.com/mklauber) and uses parameter based classes rather than includes and includes additional features for:
-  * custom cron entries
   * enabling gzip for database
   * allow for overrides of aide.conf and cron.d templates
   * aide logging options

@@ -1,19 +1,13 @@
 source ENV['GEM_SOURCE'] || 'https://rubygems.org'
 
-if ENV.key?('PUPPET_VERSION')
-  puppetversion = "= #{ENV['PUPPET_VERSION']}"
-else
-  puppetversion = ['>= 2.7']
-end
-
-#gem 'rake'
-gem 'puppet', puppetversion
-gem 'puppetlabs_spec_helper'
-gem 'puppet-lint'
-gem 'puppet-syntax'
-gem 'rspec-puppet'
+puppetversion = ENV.key?('PUPPET_VERSION') ? ENV['PUPPET_VERSION'] : ['>= 2.7']
 gem 'metadata-json-lint'
+gem 'puppet', puppetversion
+gem 'puppetlabs_spec_helper', '>= 1.0.0'
+gem 'puppet-lint', '>= 1.0.0'
 gem 'facter', '>= 1.7.0'
+gem 'rspec-puppet'
+gem 'puppet-syntax'
 
 # rspec must be v2 for ruby 1.8.7
 if RUBY_VERSION >= '1.8.7' && RUBY_VERSION < '1.9'

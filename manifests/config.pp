@@ -14,7 +14,6 @@ class aide::config (
     owner   => 'root',
     group   => 'root',
     mode    => '0600',
-    require => Package['aide'],
   }
 
   concat::fragment { 'aide.conf.header':

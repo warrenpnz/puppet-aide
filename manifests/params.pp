@@ -2,7 +2,7 @@
 class aide::params {
   $package         = 'aide'
   $mailto          = undef
-  $version         = latest
+  $version         = 'latest'
   $db_path         = '/var/lib/aide/aide.db'
   $db_temp_path    = '/var/lib/aide/aide.db.new'
   $gzip_dbout      = 'no'
@@ -24,7 +24,9 @@ class aide::params {
       $conf_path = '/etc/aide.conf'
     }
     default: {
-      fail("The ${module_name} module is not supported on an ${::osfamily} based system.")
+      $aide_path = '/usr/sbin/aide'
+      $conf_path = '/etc/aide.conf'
+      #fail("The ${module_name} module is not supported on an ${::osfamily} based system.")
     }
   }
 }
