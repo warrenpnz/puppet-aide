@@ -44,18 +44,23 @@ The simplest use of `warrenpnz/aide` is to place a watch on the root directory, 
 
 This example adds the line `/ R` which watches the permissions of all files on the operating system.  Obviously, this is a simplistic, non useful solution.
 
+Note that the path parameter is optional with the default being the watch name, e.g.
+
+    aide::watch { '/etc':
+      rules => 'p'
+    }
+
 Watch permissions and md5sums of all files in /etc
 ----------
 
-    aide::watch { 'example':
+    aide::watch { 'watch etc':
       path  => '/etc',
       rules => 'p+md5'
     }
 
 This example adds the line `/etc p+md5` which watches `/etc` with both permissions and md5sums.  This could also be implemented as follows.
 
-    aide::watch { 'example':
-      path  => '/etc',
+    aide::watch { '/etc':
       rules => ['p', 'md5']
     }
 
@@ -70,7 +75,6 @@ Sometimes you wish to use the same rule to watch multiple directories, and in ke
       rules => ['p', 'md5']
     }
     aide::watch { '/etc':
-      path  => '/etc',
       rules => 'MyRule'
     }
     aide::watch { 'otherApp':
@@ -83,8 +87,8 @@ Here we are defining a rule in called **MyRule** which will add the line `MyRule
 Create a rule to exclude directories
 -----------
 
-    aide::watch { '/var/log':
-      path => '/etc',
+    aide::watch { 'Exclude /var/log':
+      path => '/var/log',
       type => 'exclude'
     }
 
@@ -94,7 +98,6 @@ Create a rule to watch only specific files
 -----------
 
     aide::watch { '/var/log/messages':
-      path => '/etc',
       type => 'equals',
       rules => 'MyRule'
     }
