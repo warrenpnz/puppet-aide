@@ -10,10 +10,10 @@ class aide::config (
 ) {
 
   concat { 'aide.conf':
-    path    => $conf_path,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0600',
+    path  => $conf_path,
+    owner => 'root',
+    group => 'root',
+    mode  => '0600',
   }
 
   concat::fragment { 'aide.conf.header':

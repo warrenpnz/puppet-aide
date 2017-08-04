@@ -20,12 +20,12 @@ class aide (
   }
 
   -> class  { '::aide::cron':
-      aide_path     => $aide_path,
-      minute        => $minute,
-      hour          => $hour,
-      nocheck       => $nocheck,
-      require       => Package[$package],
-    } 
+      aide_path => $aide_path,
+      minute    => $minute,
+      hour      => $hour,
+      nocheck   => $nocheck,
+      require   => Package[$package],
+    }
 
   -> class  { '::aide::config':
       conf_path       => $conf_path,
