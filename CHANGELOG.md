@@ -1,3 +1,16 @@
+warrenpz/aide-1.0.3
+==================
+  - Updated ordering in conf file of exclude rules to group them together for readability.
+    the way that AIDE handles rules internally does not matter where rules are in the
+    config file, but it is easier to read if they are together.
+
+warrenpz/aide-1.0.2
+==================
+
+ - Refactored module classes to be parameter based
+ - Updated template for conf file to include AIDE help info
+ - Examples added
+
 mklauber/aide-1.1.0
 ==================
 

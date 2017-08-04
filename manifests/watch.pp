@@ -20,9 +20,16 @@ define aide::watch (
     default   => fail("Type field value ${type} is invalid.  Acceptable values are ['regular', 'equals', 'exclude']"),
   }
 
+  # Try to ensure that exclude watches are defined prior to actual watches (can override)
+  case $_type {
+    'exclude': { $watch_order = $order + 20 }
+    default:   { $watch_order = $order }
+  }
+
   concat::fragment { $title:
     target  => 'aide.conf',
-    order   => $order,
+    order   => $watch_order,
     content => $content,
   }
+
 }

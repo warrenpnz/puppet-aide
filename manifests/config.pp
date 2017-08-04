@@ -30,7 +30,7 @@ class aide::config (
 
   concat::fragment { 'watch_header':
     target  => 'aide.conf',
-    order   => '49',
+    order   => '45',
     content => "\n# Files and directories to scan\n",
   }
 
