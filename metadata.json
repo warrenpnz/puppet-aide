@@ -1,7 +1,7 @@
 {
   "name": "warrenpnz-aide",
   "version": "1.0.3",
-  "summary": "A puppet module for installing and configuring AIDE.",
+  "summary": "A puppet module for installing and configuring AIDE (Advanced Intrustion Detection Environment).",
   "author": "Warren Powell",
   "description": "A puppet module for the installation and configuration of the AIDE (Advanced Intrusion Detection System) application",
   "license": "Apache-2.0",
