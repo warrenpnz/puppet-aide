@@ -1,3 +1,10 @@
+warrenpz/aide-1.0.4
+==================
+  - Added Puppet forge tags
+  - README updates for typos
+  - Additional examples
+  - Spec test fixes
+
 warrenpz/aide-1.0.3
 ==================
   - Updated ordering in conf file of exclude rules to group them together for readability.
