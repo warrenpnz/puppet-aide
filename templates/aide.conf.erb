@@ -2,10 +2,14 @@
 
 # Configuration file for AIDE.
 
+#Variables are required for openscap-security-guide
+@@define DBDIR <%= @db_path %>
+@@define DBDIR_TEMP <%= @db_temp_path %>
+
 # Database configuration
-database=file:<%= @db_path %>
-database_out=file:<%= @db_temp_path %>
-database_new=file:<%= @db_temp_path %>
+database=file:@@{DBDIR}
+database_out=file:@@{DBDIR_TEMP}
+database_new=file:@@{DBDIR_TEMP}
 
 # gzip output to the database?
 gzip_dbout=<%= @gzip_dbout %>
