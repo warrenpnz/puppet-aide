@@ -1,10 +1,12 @@
 # class managing aide configuration.
 class aide::config (
   $conf_path,
-  $db_path,
-  $db_temp_path,
+  $db_dir,
+  $log_dir,
+  $db_filename,
+  $db_temp_filename,
+  $aide_log_file,
   $gzip_dbout,
-  $aide_log,
   $syslogout,
   $config_template,
 ) {
