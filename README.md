@@ -202,6 +202,13 @@ Whether to enable or disable scheduled checks
 
 Default value: `true`.
 
+#### `mailto`
+
+Data type: String
+
+Set this vaule to send email of results from aide --check in cron.
+
+Default value: `undef`
 
 ## Hiera
 

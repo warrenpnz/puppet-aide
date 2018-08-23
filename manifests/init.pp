@@ -13,6 +13,7 @@ class aide (
   $syslogout       = $aide::params::syslogout,
   $config_template = $aide::params::config_template,
   $nocheck         = $aide::params::nocheck,
+  $mailto          = $aide::params::mailto,
 ) inherits aide::params {
 
   package { $package:
