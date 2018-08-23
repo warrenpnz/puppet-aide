@@ -4,6 +4,7 @@ class aide::cron (
   $minute,
   $hour,
   $nocheck,
+  $mailto,
 ) {
 
   if $nocheck == true {
@@ -12,12 +13,21 @@ class aide::cron (
     $cron_ensure = 'present'
   }
 
-  cron { 'aide':
-    ensure  => $cron_ensure,
-    command => "${aide_path} --check",
-    user    => 'root',
-    hour    => $hour,
-    minute  => $minute,
+  if $mailto != undef {
+    cron { 'aide':
+      ensure  => $cron_ensure,
+      command => "${aide_path} --check | /bin/mail -s \"\$(hostname) - AIDE Integrity Check\" ${mailto}",
+      user    => 'root',
+      hour    => $hour,
+      minute  => $minute,
+    }
+  } else {
+    cron { 'aide':
+      ensure  => $cron_ensure,
+      command => "${aide_path} --check",
+      user    => 'root',
+      hour    => $hour,
+      minute  => $minute,
+    }
   }
-
 }
