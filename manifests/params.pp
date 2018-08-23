@@ -3,12 +3,14 @@ class aide::params {
   $package         = 'aide'
   $mailto          = undef
   $version         = 'latest'
-  $db_path         = '/var/lib/aide/aide.db'
-  $db_temp_path    = '/var/lib/aide/aide.db.new'
+  $db_dir           = '/var/lib/aide'
+  $log_dir          = '/var/log/aide'
+  $db_filename      = 'aide.db'
+  $db_temp_filename = 'aide.db.new'
+  $aide_log_file    = 'aide.log'
   $gzip_dbout      = 'no'
   $hour            = 0
   $minute          = 0
-  $aide_log        = '/var/log/aide/aide.log'
   $syslogout       = true
   $config_template = 'aide/aide.conf.erb'
   $cron_template   = 'aide/cron.erb'

@@ -3,23 +3,26 @@
 # Configuration file for AIDE.
 
 #Variables are required for openscap-security-guide
-@@define DBDIR <%= @db_path %>
-@@define DBDIR_TEMP <%= @db_temp_path %>
+@@define DBDIR <%= @db_dir %>
+@@define LOGDIR <%= @log_dir %>
 
 # Database configuration
-database=file:@@{DBDIR}
-database_out=file:@@{DBDIR_TEMP}
-database_new=file:@@{DBDIR_TEMP}
+database=file:@@{DBDIR}/<%= @db_filename %>
+database_out=file:@@{DBDIR}/<%= @db_temp_filename %>
+database_new=file:@@{DBDIR}/<%= @db_temp_filename %>
 
 # gzip output to the database?
 gzip_dbout=<%= @gzip_dbout %>
 
+verbose=<%= @verbose %>
+
 # Where to log output (stdout, log file and syslog if requested)
+report_url=file:@@{LOGDIR}/<%= @aide_log_file %>
 report_url=stdout
-report_url=file://<%= @aide_log %>
 <% if @syslogout -%>
 report_url=syslog:LOG_AUTH
 <% end -%>
+
 
 # Rule predefined types:
 #p:      permissions
