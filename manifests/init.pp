@@ -25,6 +25,7 @@ class aide (
       minute    => $minute,
       hour      => $hour,
       nocheck   => $nocheck,
+      mailto    => $mailto,
       require   => Package[$package],
     }
 
