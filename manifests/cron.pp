@@ -1,6 +1,7 @@
 # Class for managing aide's cron job.
 class aide::cron (
   $aide_path,
+  $conf_path,
   $minute,
   $hour,
   $nocheck,
@@ -16,7 +17,7 @@ class aide::cron (
   if $mailto != undef {
     cron { 'aide':
       ensure  => $cron_ensure,
-      command => "${aide_path} --check | /bin/mail -s \"\$(hostname) - AIDE Integrity Check\" ${mailto}",
+      command => "${aide_path} -c ${conf_path} --check | /usr/bin/mail -s \"\$(hostname) - AIDE Integrity Check\" ${mailto}",
       user    => 'root',
       hour    => $hour,
       minute  => $minute,
@@ -24,7 +25,7 @@ class aide::cron (
   } else {
     cron { 'aide':
       ensure  => $cron_ensure,
-      command => "${aide_path} --check",
+      command => "${aide_path} -c ${conf_path} --check",
       user    => 'root',
       hour    => $hour,
       minute  => $minute,
